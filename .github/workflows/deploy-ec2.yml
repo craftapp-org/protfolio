@@ -105,7 +105,6 @@ jobs:
             
             # Final verification
             # Get storage device ID (assuming root device)
-            DEVICE_ID=$(lsblk -d -o MAJ:MIN | awk 'NR==2{print $1}')
             echo "Current cgroup processes:"
             cat /sys/fs/cgroup/${{ env.PROJECT_NAME }}/cgroup.procs
             echo "Container stats:"
