@@ -83,9 +83,9 @@ jobs:
             sudo chmod 644 .env
             ./devops/cgroup-setup.sh "${{ env.PROJECT_NAME }}" "${{ env.CPU_LIMIT }}" "${{ env.MEMORY_LIMIT }}"  "${{ env.STORAGE_LIMIT_GB }}" "$DEVICE_ID"
             # Clean up and deploy with explicit env file
-            docker-compose --env-file .env --env-file backend/.env down || true
+            docker-compose --env-file backend/.env down || true
             docker system prune -f
-            docker-compose --env-file .env --env-file backend/.env up -d --build
+            docker-compose --env-file backend/.env up -d --build
             sleep 10  # Wait for full initialization
             services=("frontend_1" "backend_1" "postgres_1")
 
